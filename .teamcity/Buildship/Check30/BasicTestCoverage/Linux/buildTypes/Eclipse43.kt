@@ -15,6 +15,7 @@ object Eclipse43 : BuildType({
         param("eclipse.test.java.home", "%linux.java8.oracle.64bit%")
         param("gradle.tasks", "clean eclipseTest")
         param("env.JAVA_HOME", "%linux.java8.oracle.64bit%")
+        param("enable.oomph.plugin", "false")
     }
 
     requirements {

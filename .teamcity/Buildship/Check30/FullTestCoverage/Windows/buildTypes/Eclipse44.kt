@@ -16,6 +16,7 @@ object Eclipse44 : BuildType({
         param("compiler.location", """%windows.java8.oracle.64bit%\bin\javac""")
         param("eclipse.test.java.home", "%windows.java8.oracle.64bit%")
         param("env.JAVA_HOME", "%windows.java8.oracle.64bit%")
+        param("enable.oomph.plugin", "false")
     }
 
     dependencies {
