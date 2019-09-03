@@ -153,10 +153,6 @@ changeBuildType(RelativeId("Promote30_Release")) {
         }
     }
     steps {
-        update<GradleBuildStep>(6) {
-            id = "RUNNER_7"
-            enabled = false
-        }
         update<GradleBuildStep>(7) {
             id = "RUNNER_8"
             enabled = false
