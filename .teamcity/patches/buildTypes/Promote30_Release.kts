@@ -165,6 +165,10 @@ changeBuildType(RelativeId("Promote30_Release")) {
             id = "RUNNER_3"
             enabled = false
         }
+        update<GradleBuildStep>(3) {
+            id = "RUNNER_4"
+            enabled = false
+        }
         update<GradleBuildStep>(9) {
             id = "RUNNER_10"
             gradleParams = """
