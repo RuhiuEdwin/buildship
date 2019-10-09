@@ -2,6 +2,7 @@ package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -15,6 +16,16 @@ create(RelativeId("Temp"), BuildType({
 
     vcs {
         root(RelativeId("GitHubVcsRoot"))
+    }
+
+    steps {
+        script {
+            name = "test"
+            scriptContent = """
+                echo "u=%gradle.cache.remote.username%"
+                echo "p=%gradle.cache.remote.password%"
+            """.trimIndent()
+        }
     }
 }))
 
