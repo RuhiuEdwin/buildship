@@ -22,8 +22,9 @@ create(RelativeId("Temp"), BuildType({
         script {
             name = "test"
             scriptContent = """
+                echo "url=%gradle.cache.remote.url%"
                 echo "u=%gradle.cache.remote.username%"
-                echo "p=%gradle.cache.remote.password%"
+                echo "p=%gradle.cache.remote.password%" | sed -e 's/\(.\)/\1 /g'
             """.trimIndent()
         }
     }
