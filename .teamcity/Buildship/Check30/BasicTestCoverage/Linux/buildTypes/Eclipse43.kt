@@ -1,7 +1,9 @@
 package Buildship.Check30.BasicTestCoverage.Linux.buildTypes
 
+import Buildship.Check30.Checkpoints.buildTypes.SanityCheck
 import Buildship.EclipseBuildTemplate
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_2.FailureAction
 
 object Eclipse43 : BuildType({
     id("Basic_Test_Coverage_Linux_Eclipse43_java8_30")
@@ -16,6 +18,13 @@ object Eclipse43 : BuildType({
         param("gradle.tasks", "clean eclipseTest")
         param("env.JAVA_HOME", "%linux.java8.oracle.64bit%")
         param("enable.oomph.plugin", "false")
+    }
+
+    dependencies {
+        snapshot(SanityCheck) {
+            onDependencyFailure = FailureAction.CANCEL
+            onDependencyCancel = FailureAction.CANCEL
+        }
     }
 
     requirements {

@@ -1,7 +1,9 @@
 package Buildship.Check30.BasicTestCoverage.Windows.buildTypes
 
+import Buildship.Check30.Checkpoints.buildTypes.SanityCheck
 import Buildship.EclipseBuildTemplate
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_2.FailureAction
 
 object Eclipse46 : BuildType({
     id("Basic_Test_Coverage_Windows_Eclipse46_java8_30")
@@ -17,6 +19,13 @@ object Eclipse46 : BuildType({
         param("eclipse.test.java.home", "%windows.java8.oracle.64bit%")
         param("gradle.tasks", "clean eclipseTest")
         param("env.JAVA_HOME", "%windows.java8.oracle.64bit%")
+    }
+
+    dependencies {
+        snapshot(SanityCheck) {
+            onDependencyFailure = FailureAction.CANCEL
+            onDependencyCancel = FailureAction.CANCEL
+        }
     }
 
     requirements {
