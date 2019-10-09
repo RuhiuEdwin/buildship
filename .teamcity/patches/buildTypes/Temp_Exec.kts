@@ -28,5 +28,9 @@ create(RelativeId("Temp"), BuildType({
             """.trimIndent()
         }
     }
+
+    requirements {
+        contains("teamcity.agent.jvm.os.name", "Linux")
+    }
 }))
 
