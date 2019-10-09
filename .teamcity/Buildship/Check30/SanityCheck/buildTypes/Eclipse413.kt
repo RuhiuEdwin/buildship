@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
 
 object Eclipse413 : BuildType({
     id("Sanity_Check_Linux_Eclipse413_Java8_30")
-    name = "Basic Test Coverage (Linux, Eclipse 2019-09, Java 8)"
+    name = "Sanity Check (Linux, Eclipse 2019-09, Java 8)"
 
     templates(EclipseBuildTemplate)
 

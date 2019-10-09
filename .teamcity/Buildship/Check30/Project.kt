@@ -13,6 +13,7 @@ object Project : Project({
                                    Buildship.Check30.Experimental.Project)
 
     subProject(Buildship.Check30.Checkpoints.Project)
+    subProject(Buildship.Check30.SanityCheck.Project)
     subProject(Buildship.Check30.BasicTestCoverage.Project)
     subProject(Buildship.Check30.FullTestCoverage.Project)
     subProject(Buildship.Check30.CrossVersionCoverage.Project)
