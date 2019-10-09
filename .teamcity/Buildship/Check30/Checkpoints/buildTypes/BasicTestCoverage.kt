@@ -3,8 +3,7 @@ package Buildship.Check30.Checkpoints.buildTypes
 import Buildship.GitHubVcsRoot
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2018_2.CheckoutMode
-import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.finishBuildTrigger
 
 object BasicTestCoverage : BuildType({
     id("Checkpoint_Basic_Test_Coverage_30")
@@ -17,19 +16,13 @@ object BasicTestCoverage : BuildType({
     }
 
     triggers {
-        vcs {
-            quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_DEFAULT
-            triggerRules = """
-                +:**
-                -:**.md
-            """.trimIndent()
+        finishBuildTrigger {
+            buildTypeExtId = "${SanityCheck.id}"
+            successfulOnly = true
             branchFilter = """
                 +:*
                 -:teamcity-versioned-settings
             """.trimIndent()
-            perCheckinTriggering = true
-            groupCheckinsByCommitter = true
-            enableQueueOptimization = false
         }
     }
 
@@ -38,6 +31,8 @@ object BasicTestCoverage : BuildType({
     }
 
     dependencies {
+        snapshot(SanityCheck, CheckpointUtils.DefaultFailureCondition)
+
         snapshot(Buildship.Check30.BasicTestCoverage.Linux.buildTypes.Eclipse43, CheckpointUtils.DefaultFailureCondition)
         snapshot(Buildship.Check30.BasicTestCoverage.Linux.buildTypes.Eclipse412, CheckpointUtils.DefaultFailureCondition)
         snapshot(Buildship.Check30.BasicTestCoverage.Windows.buildTypes.Eclipse43, CheckpointUtils.DefaultFailureCondition)
