@@ -12,5 +12,9 @@ in the project with id = 'Temp', and delete the patch script.
 create(RelativeId("Temp"), BuildType({
     id("Temp_Exec")
     name = "exec"
+
+    vcs {
+        root(RelativeId("GitHubVcsRoot"))
+    }
 }))
 
