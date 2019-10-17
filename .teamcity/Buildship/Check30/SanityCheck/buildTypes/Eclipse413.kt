@@ -13,7 +13,7 @@ object Eclipse413 : BuildType({
         param("eclipse.version", "413")
         param("compiler.location", "%linux.java8.oracle.64bit%/bin/javac")
         param("eclipse.test.java.home", "%linux.java8.oracle.64bit%")
-        param("gradle.tasks", "assemble")
+        param("gradle.tasks", "assemble checkstyleMain")
         param("env.JAVA_HOME", "%linux.java8.oracle.64bit%")
     }
 
