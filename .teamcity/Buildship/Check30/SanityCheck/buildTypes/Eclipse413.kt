@@ -2,12 +2,19 @@ package Buildship.Check30.SanityCheck.buildTypes
 
 import Buildship.EclipseBuildTemplate
 import jetbrains.buildServer.configs.kotlin.v2018_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.retryBuild
 
 object Eclipse413 : BuildType({
     id("Sanity_Check_Linux_Eclipse413_Java8_30")
     name = "Sanity Check (Linux, Eclipse 2019-09, Java 8)"
 
     templates(EclipseBuildTemplate)
+
+    triggers {
+        retryBuild {
+            attempts = 0
+        }
+    }
 
     params {
         param("eclipse.version", "413")
