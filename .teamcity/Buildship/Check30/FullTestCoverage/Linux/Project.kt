@@ -17,4 +17,5 @@ object Project : Project({
     buildType(Eclipse410)
     buildType(Eclipse411)
     buildType(Eclipse413)
+    buildType(Eclipse414)
 })
